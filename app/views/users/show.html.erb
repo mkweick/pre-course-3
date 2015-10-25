@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
+
+<h3>Posts</h3>
+<% @user.posts.reverse.each do |msg| %>
+  <p>
+    <%= msg.content %>
+    <br/>
+    <span class="timestamp">(Posted <%= time_ago_in_words(msg.created_at) %> ago)</span>
+  </p>
+<% end %>
+
+<h3>Groups</h3>
+<% @user.groups.each do |group| %>
+  <%= group.name %>
+  <br/>
+<% end %>
